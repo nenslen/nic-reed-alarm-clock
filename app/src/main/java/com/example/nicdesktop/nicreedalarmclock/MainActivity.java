@@ -12,6 +12,7 @@ import android.widget.CompoundButton;
 import android.widget.TimePicker;
 import android.widget.ToggleButton;
 
+
 public class MainActivity extends AppCompatActivity {
     private AlarmManager alarmManager;
     private PendingIntent puzzleIntent;
@@ -41,5 +42,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-    }
+
 }
