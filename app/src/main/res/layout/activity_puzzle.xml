@@ -79,10 +79,19 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:onClick="answerButtonClick"
-            android:text="Button"
+            android:text="Answer"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtAnswer" />
+
+        <TextView
+            android:id="@+id/txtNumPuzzles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:text="Puzzles: 0 of 3 solved"
+            android:layout_below="@+id/btnAnswer"
+            android:layout_centerHorizontal="true" />
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

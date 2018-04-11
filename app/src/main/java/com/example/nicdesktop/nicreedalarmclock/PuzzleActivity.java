@@ -1,5 +1,6 @@
 package com.example.nicdesktop.nicreedalarmclock;
 
+import android.content.Intent;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -18,10 +19,13 @@ public class PuzzleActivity extends AppCompatActivity {
     TextView textNum2;
     TextView textOperator;
     EditText textAnswer;
+    TextView textNumPuzzles;
 
-    // Declare alarm
+    // Declare alarm variables
     Uri notification;
     Ringtone r;
+    int numPuzzles;
+    int solvedPuzzles;
 
 
     @Override
@@ -33,11 +37,14 @@ public class PuzzleActivity extends AppCompatActivity {
         textNum1 = (TextView)findViewById(R.id.txtNum1);
         textNum2 = (TextView)findViewById(R.id.txtNum2);
         textOperator = (TextView)findViewById(R.id.txtOperator);
-        textAnswer = (EditText) findViewById(R.id.txtAnswer);
+        textAnswer = (EditText)findViewById(R.id.txtAnswer);
+        textNumPuzzles = (TextView)findViewById(R.id.txtNumPuzzles);
 
-
+        // Get the number of puzzles to solve (default is 3)
+        Intent intent = getIntent();
+        numPuzzles = intent.getIntExtra("numPuzles", 3);
+        solvedPuzzles = 0;
         generateQuestion();
-
 
         // Start alarm
         notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
@@ -62,13 +69,22 @@ public class PuzzleActivity extends AppCompatActivity {
         int answer = Integer.parseInt(textAnswer.getText().toString());
 
 
-        // Shut off alarm and return to main screen if answer was correct
+        // Check if given answer was correct
         if(answerCheck(num1, num2, operator, answer)) {
-            r.stop();
-            finish();
-        } else {
-            textAnswer.setText("");
+            solvedPuzzles++;
+
+            if(solvedPuzzles >= numPuzzles) {
+                // Shut off alarm and return to main screen
+                r.stop();
+                finish();
+            } else {
+                // Load the next question
+                generateQuestion();
+                textNumPuzzles.setText("Puzzles: " + solvedPuzzles + " of " + numPuzzles + " solved");
+            }
         }
+
+        textAnswer.setText("");
     }
 
 
