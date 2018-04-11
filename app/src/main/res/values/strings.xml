@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">NicReedAlarmClock</string>
     <string name="puzzleNumLabel">Number of puzzles:&#160;</string>
-    <string name="setAlarm">Set</string>
-    <string name="unSetAlarm">Not Set</string>
+    <string name="setAlarm">Alarm Is Set</string>
+    <string name="unSetAlarm">Alarm Is Not Set</string>
 </resources>

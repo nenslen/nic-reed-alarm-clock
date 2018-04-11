@@ -23,14 +23,14 @@ public class MainActivity extends AppCompatActivity {
     private ToggleButton toglBtnSetAlarm;
     private TextView puzzleNum;
     private SeekBar puzzleNumBar;
-
+    private Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         intent = new Intent(this, PuzzleActivity.class);
         setContentView(R.layout.activity_main);
+        context = getApplicationContext();
 
-        puzzleIntent = PendingIntent.getActivity(this, 1, intent, PendingIntent.FLAG_CANCEL_CURRENT);
 
         alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
         timePicker = (TimePicker) findViewById(R.id.timePicker);
@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     intent.putExtra("numPuzles", Integer.parseInt(puzzleNum.getText().toString()));
+                    puzzleIntent = PendingIntent.getActivity(context, 1, intent, PendingIntent.FLAG_CANCEL_CURRENT);
                     alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,
                             getTimeMilli(timePicker),
                             AlarmManager.INTERVAL_DAY, puzzleIntent);
