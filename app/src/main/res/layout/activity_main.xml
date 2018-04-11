@@ -4,13 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context="com.example.nicdesktop.nicreedalarmclock.MainActivity">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             tools:context="com.example.nicdesktop.nicreedalarmclock.MainActivity">
 
             <TimePicker
@@ -19,18 +23,48 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true" />
 
+            <SeekBar
+                android:id="@+id/seekBarNumPuzzles"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="9"
+                android:progress="3"
+                android:layout_below="@+id/puzzleNum"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
             <ToggleButton
                 android:id="@+id/tgleBtnSetAlarm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/timePicker"
-                android:textOff="Not Set"
-                android:textOn="Set" />
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/seekBarNumPuzzles"
+                android:textOff="@string/unSetAlarm"
+                android:textOn="@string/setAlarm"
+                android:layout_marginTop="15dp"/>
 
+            <TextView
+                android:id="@+id/puzzleNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/timePicker"
+                android:layout_toEndOf="@+id/puzzleLabel"
+                android:layout_toRightOf="@id/puzzleLabel"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="15dp"
+                android:text="3"/>
+
+            <TextView
+                android:id="@+id/puzzleLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/timePicker"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="15dp"
+                android:text="@string/puzzleNumLabel"/>
 
         </RelativeLayout>
     </ScrollView>
-
-
-
 </LinearLayout>
