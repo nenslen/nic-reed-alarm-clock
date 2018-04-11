@@ -50,6 +50,7 @@ public class PuzzleActivity extends AppCompatActivity {
         notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
         r = RingtoneManager.getRingtone(getApplicationContext(), notification);
         r.play();
+        textNumPuzzles.setText("Puzzles: " + solvedPuzzles + " of " + numPuzzles + " solved");
     }
 
 
