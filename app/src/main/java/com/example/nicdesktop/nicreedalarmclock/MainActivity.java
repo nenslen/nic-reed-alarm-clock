@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         context = getApplicationContext();
 
-
         alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
         timePicker = (TimePicker) findViewById(R.id.timePicker);
         toglBtnSetAlarm = (ToggleButton) findViewById(R.id.tgleBtnSetAlarm);
@@ -42,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         toglBtnSetAlarm.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
+                    // set number of puzzles
                     intent.putExtra("numPuzles", Integer.parseInt(puzzleNum.getText().toString()));
                     puzzleIntent = PendingIntent.getActivity(context, 1, intent, PendingIntent.FLAG_CANCEL_CURRENT);
                     alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,
@@ -61,16 +61,17 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
+                // generated function
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
+                // generated function
             }
         });
     }
 
+    // converts hours and minutes into milliseconds 
     private long getTimeMilli(TimePicker timePicker){
         final Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY, timePicker.getCurrentHour());
@@ -78,8 +79,6 @@ public class MainActivity extends AppCompatActivity {
         calendar.set(Calendar.SECOND, 0);
         calendar.set(Calendar.MILLISECOND, 0);
 
-        long millis = calendar.getTimeInMillis();
-
-        return millis;
+        return calendar.getTimeInMillis();
     }
 }
